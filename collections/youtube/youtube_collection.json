@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "8c2b64af-4b56-483b-899e-a504ae0f9c82",
+		"name": "Youtube",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "fetch_trends_videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/videos?key=[YOUTUBE_API_KEY]&part=snippet&chart=mostPopular&regionCode=KR&maxResults=1",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"videos"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "chart",
+							"value": "mostPopular"
+						},
+						{
+							"key": "regionCode",
+							"value": "KR"
+						},
+						{
+							"key": "maxResults",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/commentThreads?key=[YOUTUBE_API_KEY]&part=snippet&maxResults=100&order=relevance&allThreadsRelatedToChannelId=UC_5XQe3rVggzJfAZt_VwdXg",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"commentThreads"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "maxResults",
+							"value": "100"
+						},
+						{
+							"key": "order",
+							"value": "relevance"
+						},
+						{
+							"key": "allThreadsRelatedToChannelId",
+							"value": "UC_5XQe3rVggzJfAZt_VwdXg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/videos?key=[YOUTUBE_API_KEY]&part=snippet,statistics,contentDetails&maxResults=50&id=hJ51VlUyLr8",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"videos"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						},
+						{
+							"key": "part",
+							"value": "snippet,statistics,contentDetails"
+						},
+						{
+							"key": "maxResults",
+							"value": "50"
+						},
+						{
+							"key": "id",
+							"value": "hJ51VlUyLr8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube playlistItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/playlistItems?key=[YOUTUBE_API_KEY]&part=snippet&maxResults=50&playlistId=UU55V69aW9X1aHFpjCWRL_iQ",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"playlistItems"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "maxResults",
+							"value": "50"
+						},
+						{
+							"key": "playlistId",
+							"value": "UU55V69aW9X1aHFpjCWRL_iQ"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube commentThreads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/youtube/v3/commentThreads?key=[YOUTUBE_API_KEY]&part=snippet&id=UCxI4mPNTmDm1Td1jMQjHbEQ&order=relevance",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"youtube",
+						"v3",
+						"commentThreads"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						},
+						{
+							"key": "part",
+							"value": "snippet"
+						},
+						{
+							"key": "maxResults",
+							"value": "50",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "UCxI4mPNTmDm1Td1jMQjHbEQ"
+						},
+						{
+							"key": "allThreadsRelatedToChannelId",
+							"value": "UCwWa8EzP8vuI_hvFWOTryEg",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "relevance"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "youtube Demographic age",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "[YOUR_TOKEN]",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://youtubeanalytics.googleapis.com/v2/reports?dimensions=ageGroup,gender&endDate=2014-06-30&filters=claimedStatus==claimed;province=US-CA&ids=contentOwner=CONTENT_OWNER_ID&metrics=viewerPercentage&sort=gender,ageGroup&startDate=2014-05-01&key=[YOUTUBE_API_KEY]",
+					"protocol": "https",
+					"host": [
+						"youtubeanalytics",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v2",
+						"reports"
+					],
+					"query": [
+						{
+							"key": "dimensions",
+							"value": "ageGroup,gender"
+						},
+						{
+							"key": "endDate",
+							"value": "2014-06-30"
+						},
+						{
+							"key": "filters",
+							"value": "claimedStatus==claimed;province=US-CA"
+						},
+						{
+							"key": "ids",
+							"value": "contentOwner=CONTENT_OWNER_ID"
+						},
+						{
+							"key": "metrics",
+							"value": "viewerPercentage"
+						},
+						{
+							"key": "sort",
+							"value": "gender,ageGroup"
+						},
+						{
+							"key": "startDate",
+							"value": "2014-05-01"
+						},
+						{
+							"key": "key",
+							"value": "[YOUTUBE_API_KEY]"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
