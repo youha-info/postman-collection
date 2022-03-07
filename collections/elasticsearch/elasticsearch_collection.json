@@ -1,0 +1,203 @@
+{
+    "info": {
+        "_postman_id": "13aee6bc-1f44-47cd-873f-cd8f6d61ce1f",
+        "name": "ElasticSearch",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "PRD",
+            "item": [
+                {
+                    "name": "Queried Keywords",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "password",
+                                    "value": "[PRODUCTION_ELASTIC_SEARCH_USER_PASSWORD]",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "[PRODUCTION_ELASTIC_SEARCH_USER_NAME]",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"aggs\": {\n    \"items\": {\n      \"terms\": {\n        \"field\": \"event_info.payload.keyword\",\n        \"order\": {\n          \"_count\": \"desc\"\n        },\n        \"size\": 10\n      }\n    }\n  },\n  \"size\": 0,\n  \"fields\": [\n    {\n      \"field\": \"@timestamp\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.created\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.end\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.ingested\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.accessed\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.created\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.ctime\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.mtime\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"package.installed\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"process.parent.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"process.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"x509.not_before\",\n      \"format\": \"date_time\"\n    }\n  ],\n  \"script_fields\": {},\n  \"stored_fields\": [\n    \"*\"\n  ],\n  \"runtime_mappings\": {},\n  \"_source\": {\n    \"excludes\": []\n  },\n  \"query\": {\n    \"bool\": {\n      \"must\": [],\n      \"filter\": [\n        {\n          \"match_all\": {}\n        },\n        {\n          \"bool\": {\n            \"should\": [\n              {\n                \"match_phrase\": {\n                  \"event_info.event\": \"SEARCH_YOUTUBE_CHANNEL_BY_KEYWORD\"\n                }\n              }\n            ],\n            \"minimum_should_match\": 1\n          }\n        },\n        {\n          \"range\": {\n            \"@timestamp\": {\n              \"gte\": \"2021-08-26T04:00:00.000Z\",\n              \"lte\": \"2022-08-26T07:00:00.000Z\",\n              \"format\": \"strict_date_optional_time\"\n            }\n          }\n        }\n      ],\n      \"should\": [],\n      \"must_not\": []\n    }\n  }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "https://[PRODUCTION_ELASTIC_SEARCH_URL]/functionbeat-*/_search",
+                            "protocol": "https",
+                            "host": [
+                                "[PRODUCTION_ELASTIC_SEARCH_URL]"
+                            ],
+                            "path": [
+                                "functionbeat-*",
+                                "_search"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Queried Categories",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "password",
+                                    "value": "[PRODUCTION_ELASTIC_SEARCH_USER_PASSWORD]",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "[PRODUCTION_ELASTIC_SEARCH_USER_NAME]",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"size\": 10000,\n    \"_source\": {\n        \"includes\": [\n            \"event_info.payload.categoryLabel\"\n        ]\n    },\n    \"query\": {\n        \"bool\": {\n            \"must\": [],\n            \"filter\": [\n                {\n                    \"multi_match\": {\n                        \"type\": \"best_fields\",\n                        \"query\": \"FILTER_CHANNEL_CATEGORY\",\n                        \"lenient\": true\n                    }\n                },\n                {\n                    \"range\": {\n                        \"@timestamp\": {\n                            \"gte\": \"2021-05-26T04:00:00.000Z\",\n                            \"lte\": \"2022-11-26T07:00:00.000Z\",\n                            \"format\": \"strict_date_optional_time\"\n                        }\n                    }\n                }\n            ],\n            \"should\": [],\n            \"must_not\": []\n        }\n    }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "https://[PRODUCTION_ELASTIC_SEARCH_URL]/functionbeat-*/_search",
+                            "protocol": "https",
+                            "host": [
+                                "[PRODUCTION_ELASTIC_SEARCH_URL]"
+                            ],
+                            "path": [
+                                "functionbeat-*",
+                                "_search"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "STG",
+            "item": [
+                {
+                    "name": "Queried Keywords",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "username",
+                                    "value": "[STAGING_ELASTIC_SEARCH_USER_NAME]",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "[STAGING_ELASTIC_SEARCH_USER_PASSWORD]",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"aggs\": {\n    \"items\": {\n      \"terms\": {\n        \"field\": \"event_info.payload.keyword\",\n        \"order\": {\n          \"_count\": \"desc\"\n        },\n        \"size\": 10\n      }\n    }\n  },\n  \"size\": 0,\n  \"fields\": [\n    {\n      \"field\": \"@timestamp\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.created\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.end\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.ingested\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"event.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.accessed\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.created\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.ctime\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.mtime\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"file.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"package.installed\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"process.parent.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"process.start\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.client.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"tls.server.x509.not_before\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"x509.not_after\",\n      \"format\": \"date_time\"\n    },\n    {\n      \"field\": \"x509.not_before\",\n      \"format\": \"date_time\"\n    }\n  ],\n  \"script_fields\": {},\n  \"stored_fields\": [\n    \"*\"\n  ],\n  \"runtime_mappings\": {},\n  \"_source\": {\n    \"excludes\": []\n  },\n  \"query\": {\n    \"bool\": {\n      \"must\": [],\n      \"filter\": [\n        {\n          \"match_all\": {}\n        },\n        {\n          \"bool\": {\n            \"should\": [\n              {\n                \"match_phrase\": {\n                  \"event_info.event\": \"SEARCH_YOUTUBE_CHANNEL_BY_KEYWORD\"\n                }\n              }\n            ],\n            \"minimum_should_match\": 1\n          }\n        },\n        {\n          \"range\": {\n            \"@timestamp\": {\n              \"gte\": \"2021-08-26T04:00:00.000Z\",\n              \"lte\": \"2022-08-26T07:00:00.000Z\",\n              \"format\": \"strict_date_optional_time\"\n            }\n          }\n        }\n      ],\n      \"should\": [],\n      \"must_not\": []\n    }\n  }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "https://[STAGING_ELASTIC_SEARCH_URL]/functionbeat-*/_search",
+                            "protocol": "https",
+                            "host": [
+                                "[STAGING_ELASTIC_SEARCH_URL]"
+                            ],
+                            "path": [
+                                "functionbeat-*",
+                                "_search"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Queried Categories",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "basic",
+                            "basic": [
+                                {
+                                    "key": "password",
+                                    "value": "[STAGING_ELASTIC_SEARCH_USER_PASSWORD]",
+                                    "type": "string"
+                                },
+                                {
+                                    "key": "username",
+                                    "value": "[STAGING_ELASTIC_SEARCH_USER_NAME]",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"size\": 10000,\n    \"_source\": {\n        \"includes\": [\n            \"event_info.payload.categoryLabel\"\n        ]\n    },\n    \"query\": {\n        \"bool\": {\n            \"must\": [],\n            \"filter\": [\n                {\n                    \"multi_match\": {\n                        \"type\": \"best_fields\",\n                        \"query\": \"FILTER_CHANNEL_CATEGORY\",\n                        \"lenient\": true\n                    }\n                },\n                {\n                    \"range\": {\n                        \"@timestamp\": {\n                            \"gte\": \"2021-05-26T04:00:00.000Z\",\n                            \"lte\": \"2022-11-26T07:00:00.000Z\",\n                            \"format\": \"strict_date_optional_time\"\n                        }\n                    }\n                }\n            ],\n            \"should\": [],\n            \"must_not\": []\n        }\n    }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "https://[STAGING_ELASTIC_SEARCH_URL]/functionbeat-*/_search",
+                            "protocol": "https",
+                            "host": [
+                                "[STAGING_ELASTIC_SEARCH_URL]"
+                            ],
+                            "path": [
+                                "functionbeat-*",
+                                "_search"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
